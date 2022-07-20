@@ -1,0 +1,29 @@
+name: Publish event
+description: Publishes an event to Fiberplane
+inputs:
+  api-token:
+    description: API token used to access the Fiberplane API with
+    required: true
+  title:
+    description: Title of the newly created event
+    required: true
+    default: GitHub Action
+  labels:
+    description: |
+      Labels to add to the event.
+      Format: key=value|key=value|key=value
+    required: true # For now these are required
+  time:
+    description: Time at which the event occurred. Defaults to current time
+    required: false
+outputs:
+  id:
+    description: ID of the newly created event
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.api-token }}
+    - ${{ inputs.title }}
+    - ${{ inputs.labels }}
+    - ${{ inputs.time }}
