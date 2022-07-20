@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# https://stackoverflow.com/a/2871034/11494565
-set -euxo pipefail
+# http://redsymbol.net/articles/unofficial-bash-strict-mode/
+set -euo pipefail
+IFS=$'\n\t'
 
 API_TOKEN=$1
 TITLE=$2
@@ -43,4 +44,7 @@ export CONFIG="$(pwd)/config.toml"
 
 export DISABLE_VERSION_CHECK=true
 
-/usr/bin/fp events create -v --title "$TITLE" "${additional_args[@]}"
+output=$(/usr/bin/fp events create -v --title "$TITLE" "${additional_args[@]}" --output json)
+id=$(jq -n '$in.id' --argjson in "$output")
+
+echo "::set-output name=id::$id"

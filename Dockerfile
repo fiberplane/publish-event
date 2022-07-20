@@ -1,7 +1,7 @@
 FROM debian:bullseye-slim
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl jq \
+    && apt-get install -y --no-install-recommends curl jq ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl https://fp.dev/fp/v0.8.0/x86_64-unknown-linux-gnu/fp -o /usr/bin/fp
