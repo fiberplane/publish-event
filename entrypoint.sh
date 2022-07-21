@@ -8,6 +8,7 @@ API_TOKEN=$1
 TITLE=$2
 LABELS=$3
 TIME=$4
+BASE_URL=$5
 
 if [[ -z $API_TOKEN ]]; then
   echo "A valid Fiberplane API token is required to post a event" >&2
@@ -21,6 +22,11 @@ fi
 
 if [[ -z $LABELS ]]; then
   echo "Please specify at least a single label for the event" >&2
+  exit 1
+fi
+
+if [[ -z $BASE_URL ]]; then
+  echo "A valid Fiberplane API base url is required" >&2
   exit 1
 fi
 
@@ -42,6 +48,7 @@ fi
 echo "api_token = '$API_TOKEN'" > config.toml
 export CONFIG="$(pwd)/config.toml"
 
+export API_BASE="$BASE_URL"
 export DISABLE_VERSION_CHECK=true
 
 output=$(/usr/bin/fp events create -v --title "$TITLE" "${additional_args[@]}" --output json)

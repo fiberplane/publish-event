@@ -16,6 +16,10 @@ inputs:
   time:
     description: Time at which the event occurred. Defaults to current time. Format should be a RFC 3339 formatted string
     required: false
+  fp-base-url:
+    description: Base URL of the Fiberplane API
+    required: true
+    default: https://fiberplane.com
 outputs:
   id:
     description: ID of the newly created event
