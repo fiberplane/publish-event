@@ -14,7 +14,7 @@ inputs:
       Format: key=value|key=value|key=value
     required: true # For now these are required
   time:
-    description: Time at which the event occurred. Defaults to current time
+    description: Time at which the event occurred. Defaults to current time. Format should be a RFC 3339 formatted string
     required: false
 outputs:
   id:
