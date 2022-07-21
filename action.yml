@@ -1,5 +1,8 @@
 name: Publish event
 description: Publishes an event to Fiberplane
+branding:
+  icon: tag
+  color: gray-dark
 inputs:
   api-token:
     description: API token used to access the Fiberplane API with
