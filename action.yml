@@ -34,3 +34,4 @@ runs:
     - ${{ inputs.title }}
     - ${{ inputs.labels }}
     - ${{ inputs.time }}
+    - ${{ inputs.fp-base-url }}
