@@ -54,4 +54,4 @@ export DISABLE_VERSION_CHECK=true
 output=$(/usr/bin/fp events create -v --title "$TITLE" "${additional_args[@]}" --output json)
 id=$(jq -n '$in.id' --argjson in "$output")
 
-echo "::set-output name=id::$id"
+echo "id=$id" >> $GITHUB_OUTPUT
