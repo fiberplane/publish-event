@@ -22,7 +22,7 @@ inputs:
   fp-base-url:
     description: Base URL of the Fiberplane API
     required: true
-    default: https://fiberplane.com
+    default: https://studio.fiberplane.com
 outputs:
   id:
     description: ID of the newly created event
