@@ -1,5 +1,5 @@
 FROM debian:bullseye-slim
-ARG FP_VERSION=0.8.0
+ARG FP_VERSION=2.0.0
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl jq ca-certificates \

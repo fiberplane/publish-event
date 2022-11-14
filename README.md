@@ -13,7 +13,7 @@ Then add the following step to a workflow of your choice:
     # ...
     steps:
       # ...
-      - uses: fiberplane/publish-event@v1
+      - uses: fiberplane/publish-event@v1.1
         with:
           # Required. Do *not* put your plaintext secret here
           api-token: ${{ secrets.FIBERPLANE_TOKEN }}
