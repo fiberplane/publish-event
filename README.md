@@ -13,12 +13,14 @@ Then add the following step to a workflow of your choice:
     # ...
     steps:
       # ...
-      - uses: fiberplane/publish-event@v1.1
+      - uses: fiberplane/publish-event@v1.2
         with:
           # Required. Do *not* put your plaintext secret here
           api-token: ${{ secrets.FIBERPLANE_TOKEN }}
           # Required
           title: "API Deployment using GitHub Actions"
+          # Required
+          workspace-id: "0li9_5B8Sq2fPg7oLfZ5nw"
           # Format: key=optional value, separated with |. At least one label is required
           labels: "product=api|type=deploy"
 ```
