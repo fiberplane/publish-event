@@ -19,6 +19,9 @@ inputs:
   time:
     description: Time at which the event occurred. Defaults to current time. Format should be a RFC 3339 formatted string
     required: false
+  workspace-id:
+    description: ID of the workspace to which the event should be posted
+    required: true
   fp-base-url:
     description: Base URL of the Fiberplane API
     required: true
@@ -34,4 +37,5 @@ runs:
     - ${{ inputs.title }}
     - ${{ inputs.labels }}
     - ${{ inputs.time }}
+    - ${{ inputs.workspace-id }}
     - ${{ inputs.fp-base-url }}
