@@ -8,7 +8,8 @@ API_TOKEN=$1
 TITLE=$2
 LABELS=$3
 TIME=$4
-BASE_URL=$5
+WORKSPACE_ID=$5
+BASE_URL=$6
 
 if [[ -z $API_TOKEN ]]; then
   echo "A valid Fiberplane API token is required to post a event" >&2
@@ -22,6 +23,11 @@ fi
 
 if [[ -z $LABELS ]]; then
   echo "Please specify at least a single label for the event" >&2
+  exit 1
+fi
+
+if [[ -z $WORKSPACE_ID ]]; then
+  echo "Please specify the workspace ID to which the event should be posted to" >&2
   exit 1
 fi
 
@@ -51,7 +57,7 @@ export CONFIG="$(pwd)/config.toml"
 export API_BASE="$BASE_URL"
 export DISABLE_VERSION_CHECK=true
 
-output=$(/usr/bin/fp events create -v --title "$TITLE" "${additional_args[@]}" --output json)
+output=$(/usr/bin/fp events create -v --title "$TITLE" --workspace-id "$WORKSPACE_ID" "${additional_args[@]}" --output json)
 id=$(jq -n '$in.id' --argjson in "$output")
 
 echo "id=$id" >> $GITHUB_OUTPUT
